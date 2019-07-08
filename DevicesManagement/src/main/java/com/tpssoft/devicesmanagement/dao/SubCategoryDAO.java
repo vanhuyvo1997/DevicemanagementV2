@@ -25,7 +25,15 @@ public class SubCategoryDAO {
 		}
 	}
 
-
+	
+//	public static void main(String[] args) {
+//	SuperCategoryDAO superCateDAO = new SuperCategoryDAO();
+//	Supercategory superCate = superCateDAO.getSuperCategoryById(12);
+//	SubCategoryDAO daoSubCate = new SubCategoryDAO();
+//	System.out.println(daoSubCate.addSubCategory(superCate, "SubCategory"));
+//	
+//}
+	
 	public Integer addSubCategory(Supercategory superCategory, String name) {
 		Session session = factory.openSession();
 		Transaction tx = null;
@@ -47,6 +55,8 @@ public class SubCategoryDAO {
 		return idSubCategory;
 	}
 
+	
+	
 	@SuppressWarnings("unchecked")
 	public List<Subcategory> getAllSubCategory() {
 		Session session = factory.openSession();
@@ -54,7 +64,7 @@ public class SubCategoryDAO {
 		List<Subcategory> subCategories = null;
 		try {
 			tx = session.beginTransaction();
-			subCategories = session.createQuery("FROM Subcategory").list();
+			subCategories = session.createQuery("FROM Subcategory ").list();
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)

@@ -38,6 +38,12 @@ public class Subcategory implements Serializable {
 	@OneToMany(mappedBy = "subcategory")
 	private Set<Device> devices;
 
+
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idsupercategory")
+	private Supercategory supercategory;
+
 	public int getIdsubcategory() {
 		return idsubcategory;
 	}
@@ -69,9 +75,4 @@ public class Subcategory implements Serializable {
 	public void setSupercategory(Supercategory supercategory) {
 		this.supercategory = supercategory;
 	}
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "idsupercategory")
-	private Supercategory supercategory;
-
 }

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Employee Form</title>
+<title>Log in</title>
 <style type="text/css">
     <%@include file="bootstrap/css/bootstrap.min.css" %>
 </style>
@@ -22,7 +22,7 @@
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mx-auto my-auto">
 				<div class="row">
 					<div class="px-2 py-2 rounded bg-light px-5 py-4 shadow-sm">
-						<s:form action="login" method="post" >
+						<s:form action="login.action" method="post" >
 							<legend class="text-success">Log in</legend>
 							<div class="form-group">
 								<s:textfield name="username" label="User name" cssClass="form-control text-warning" />

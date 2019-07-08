@@ -1,11 +1,8 @@
 package com.tpssoft.devicesmanagement.action;
 
-import java.util.Map;
-
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
-import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.tpssoft.devicesmanagement.dao.UserDAO;
@@ -13,17 +10,16 @@ import com.tpssoft.devicesmanagement.model.User;
 
 @Results(
 		{ 
-			@Result(name = "success", location = "/loai.jsp"),
-			@Result(name = "error", location = "/index.jsp") 
+			@Result(name = "success", location = "/WEB-INF/views/success.jsp"),
+			@Result(name = "error", location = "/WEB-INF/views/index.jsp") 
 		})
-public class LoginAction extends ActionSupport implements SessionAware {
+public class LoginAction extends ActionSupport {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private String username, password;
-	private Map<String, Object> sessionMap;
 
 	@Action(value = "login")
 	public String execute() {
@@ -31,9 +27,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		User user = daoUser.getUserById(getUsername());
 		if (user != null && user.getPassword().equals(password)) {
 			return SUCCESS;
-		} else
-			return ERROR;
+		} 
+		return ERROR;
 	}
+	
 
 	public String getUsername() {
 		return username;
@@ -51,8 +48,4 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.password = password;
 	}
 
-	@Override
-	public void setSession(Map<String, Object> session) {
-		this.sessionMap = session;
-	}
 }
